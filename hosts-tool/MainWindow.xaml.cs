@@ -85,36 +85,43 @@ namespace hosts_tool
                 MessageBox.Show("You have to be admin to modify hosts file!", "Need Admin privilege!", MessageBoxButton.OK, MessageBoxImage.Stop);
                 return;
             }
-
-            if (File.Exists("hosts"))
-            {
-                File.Delete("hosts");
-            }
-
             try
             {
-                await DownloadFileAsync();
+                if (File.Exists("hosts"))
+                {
+                    File.Delete("hosts");
+                }
+
+                try
+                {
+                    await DownloadFileAsync();
+                }
+                catch
+                {
+                    MessageBox.Show("Could not download hosts file from the source specified!", "Download failed!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+                string target = System.Environment.SystemDirectory + "\\drivers\\etc\\hosts";
+                if (File.Exists(target))
+                {
+                    File.Delete(target);
+                }
+
+                try
+                {
+                    File.Move("hosts", target);
+                    MessageBox.Show("If you see no errors, your hosts file has been updated", "Done", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Could not update your hosts file, please disable your Anti-Virus first", "Update failed!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             catch
             {
-                MessageBox.Show("Could not download hosts file from the source specified!", "Download failed!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Access is denied! Please Disable your security software and try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            string target = System.Environment.SystemDirectory + "\\drivers\\etc\\hosts";
-            if (File.Exists(target))
-            {
-                File.Delete(target);
-            }
-
-            try
-            {
-                File.Move("hosts", target);
-                MessageBox.Show("If you see no errors, your hosts file has been updated", "Done", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch
-            {
-                MessageBox.Show("Could not update your hosts file, please disable your Anti-Virus first", "Update failed!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }           
+                      
         }
         private void button1_Click(object sender, RoutedEventArgs e)
         {
