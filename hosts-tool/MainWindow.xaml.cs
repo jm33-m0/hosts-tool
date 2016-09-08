@@ -90,6 +90,7 @@ namespace hosts_tool
             {
                 File.Delete("hosts");
             }
+
             try
             {
                 await DownloadFileAsync();
@@ -104,6 +105,7 @@ namespace hosts_tool
             {
                 File.Delete(target);
             }
+
             try
             {
                 File.Move("hosts", target);
@@ -117,7 +119,8 @@ namespace hosts_tool
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             // recovering hosts file
-            MessageBox.Show("This feature is under development, check back later", "Hey!", MessageBoxButton.OK, MessageBoxImage.Information);
+            this.Close();
+            //MessageBox.Show("This feature is under development, check back later", "Hey!", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

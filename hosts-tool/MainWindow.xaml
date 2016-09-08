@@ -11,9 +11,8 @@
     <Grid Height="221" VerticalAlignment="Top">
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="64" Margin="22,40,0,0" TextWrapping="Wrap" Text="https://raw.githubusercontent.com/racaljk/hosts/master/hosts" VerticalAlignment="Top" Width="262"/>
         <Label x:Name="label" Content="Hosts源：" HorizontalAlignment="Left" Margin="22,9,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button" Content="更新本地hosts" HorizontalAlignment="Left" Margin="22,157,0,0" VerticalAlignment="Top" Width="85" Click="button_Click"/>
-        <Button x:Name="button1" Content="恢复默认hosts" HorizontalAlignment="Left" Margin="190,157,0,0" VerticalAlignment="Top" Width="83" Click="button1_Click"/>
-        <CheckBox x:Name="checkBox" Content="自动更新hosts" HorizontalAlignment="Left" Margin="24,126,0,0" VerticalAlignment="Top" Checked="checkBox_Checked" Unchecked="checkBox_Unchecked"></CheckBox>
+        <Button x:Name="button" Content="更新本地hosts" HorizontalAlignment="Left" Margin="22,142,0,0" VerticalAlignment="Top" Width="85" Click="button_Click"/>
+        <Button x:Name="button1" Content="退出" HorizontalAlignment="Left" Margin="201,142,0,0" VerticalAlignment="Top" Width="83" Click="button1_Click"/>
         <StatusBar HorizontalAlignment="Left" Height="23" Margin="0,188,0,0" VerticalAlignment="Top" Width="324">
             <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Ready" Width="314"/>
         </StatusBar>
